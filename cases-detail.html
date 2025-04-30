@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Details</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Case Details - Smart Case Management</title>
     <link rel="stylesheet" href="css/cases-detail.css">
-    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
+
 <body>
     <div class="app-container">
-        <!-- Sidebar Navigation (Same as dashboard) -->
         <!-- Sidebar Navigation -->
         <div class="sidebar">
             <div class="sidebar-header">
                 <img src="assets/logo-small.png" alt="Logo">
                 <h3>Smart Case Management</h3>
             </div>
-            
             <ul class="sidebar-menu">
-                <li class="active"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="case-management.html"><i class="fas fa-folder-open"></i> Case Management</a></li>
-                <li><a href="court-types.html"><i class="fas fa-gavel"></i> Court Types</a></li>
-                <li><a href="search.html"><i class="fas fa-search"></i> Search Cases</a></li>
-                <li><a href="user-management.html"><i class="fas fa-users"></i> User Management</a></li>
-                <li><a href="organizations.html"><i class="fas fa-building"></i> Organizations</a></li>
-                <li><a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
-                <li><a href="notifications.html"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="case-management.html"><i class="fas fa-folder-open"></i> <span>Case Management</span></a>
+                </li>
+                <li><a href="lists.html"><i class="fas fa-gavel"></i> <span>Lists</span></a></li>
+                <li><a href="search.html"><i class="fas fa-search"></i> <span>Search Cases</span></a></li>
+                <li><a href="user-management.html"><i class="fas fa-users"></i> <span>User Management</span></a></li>
+                <li class="active"><a href="document-management.html"><i class="fas fa-file-alt"></i> <span>Document
+                            Management</span></a></li>
+                <li><a href="organizations.html"><i class="fas fa-building"></i> <span>Organizations</span></a></li>
+                <li><a href="reports.html"><i class="fas fa-chart-bar"></i> <span>Reports</span></a></li>
+                <li><a href="case-history.html"><i class="fas fa-history"></i> <span>Case History</span></a></li>
+                <li><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity
+                            Log</span></a></li>
+                <li><a href="account.html"><i class="fa-solid fa-user"></i><span>Acccount
+                            </span></a></li>
             </ul>
-            
             <div class="sidebar-footer">
                 <div class="user-profile">
-                    <img src="assets/user-avatar.png" alt="User">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="avatar">
                     <div class="user-info">
                         <span class="username">Admin User</span>
                         <span class="role">Administrator</span>
                     </div>
                 </div>
-                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
             </div>
         </div>
-        
+
         <!-- Main Content Area -->
         <div class="main-content">
             <div class="top-bar">
@@ -52,16 +57,12 @@
                 </div>
                 <div class="top-bar-actions">
                     <div class="search-box">
-                        <input type="text" placeholder="Search...">
+                        <input type="text" id="caseSearch" placeholder="Search cases...">
                         <i class="fas fa-search"></i>
                     </div>
-                    <button class="btn-notification">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
                 </div>
             </div>
-            
+
             <div class="content-wrapper">
                 <div class="detail-header">
                     <h2 id="pageTitle">Case Details</h2>
@@ -74,74 +75,255 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <!-- Filter Section -->
                 <div class="filter-section">
-                    <input type="text" id="caseNumberSearch" placeholder="Search by Case Number">
-                    
-                    <select id="organizationFilter">
-                        <option value="">All Organizations</option>
-                        <option value="MoTJ">Ministry of Textiles and Jute (MoTJ)</option>
-                        <option value="BHB">Bangladesh Handloom Board</option>
-                        <option value="BSB">Bangladesh Sericulture Board</option>
-                        <option value="JMC">Jute Mills Corporation</option>
-                    </select>
-                    
-                    <select id="caseTypeFilter">
-                        <option value="">All Case Types</option>
-                        <option value="Civil">Civil</option>
-                        <option value="Criminal">Criminal</option>
-                        <option value="Writ">Writ</option>
-                    </select>
-                    
-                    <select id="courtFilter">
-                        <option value="">All Courts</option>
-                        <option value="Supreme Court">Supreme Court</option>
-                        <option value="High Court">High Court</option>
-                        <option value="District Court">District Court</option>
-                    </select>
-                    
-                    <select id="statusFilter">
-                        <option value="">All Statuses</option>
-                        <option value="Pending">Pending</option>
-                        <option value="Disposed">Disposed</option>
-                        <option value="Adjourned">Adjourned</option>
-                    </select>
-                    
-                    <input type="date" id="dateFilter">
-                    <button id="resetFilters">Reset Filters</button>
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label for="caseTypeFilter">Case Type:</label>
+                            <select id="caseTypeFilter">
+                                <option value="all">All Types</option>
+                                <option value="labor">Labor Court</option>
+                                <option value="civil">Civil Court</option>
+                                <option value="high">High Court</option>
+                                <option value="environmental">Environmental</option>
+                                <option value="criminal">Criminal</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="statusFilter">Status:</label>
+                            <select id="statusFilter">
+                                <option value="all">All Statuses</option>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                                <option value="closed">Closed</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="orgFilter">Organization:</label>
+                            <select id="orgFilter">
+                                <option value="all">All Organizations</option>
+                                <option value="MoTI">MoTI</option>
+                                <option value="Dept. of Jute">Dept. of Jute</option>
+                                <option value="Bangladesh Handloom Board">Bangladesh Handloom Board</option>
+                                <option value="MoEFCC">MoEFCC</option>
+                                <option value="NBR">NBR</option>
+                                <option value="ICT Division">ICT Division</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="dateFilter">Date Range:</label>
+                            <input type="date" id="startDate">
+                            <span>to</span>
+                            <input type="date" id="endDate">
+                        </div>
+                        <button class="btn-apply" id="applyFilters">Apply Filters</button>
+                        <button class="btn-reset" id="resetFilters">Reset</button>
+                    </div>
                 </div>
-                
+
                 <!-- Cases Table -->
-                <table id="casesTable">
-                    <thead>
-                        <tr>
-                            <th>Case No.</th>
-                            <th>Organization</th>
-                            <th>Case Type</th>
-                            <th>Court</th>
-                            <th>Status</th>
-                            <th>Hearing Date</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="casesTableBody">
-                        <!-- Cases will be loaded here dynamically -->
-                    </tbody>
-                </table>
-                
-                <!-- Pagination -->
-                <div class="pagination">
-                    <button id="prevPage" disabled><i class="fas fa-chevron-left"></i></button>
-                    <span id="pageInfo">Page 1 of 5</span>
-                    <button id="nextPage"><i class="fas fa-chevron-right"></i></button>
+                <div class="container case_mgt">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Serial No.</th>
+                                    <th>Case No.</th>
+                                    <th>Title</th>
+                                    <th>Type</th>
+                                    <th>Court</th>
+                                    <th>Status</th>
+                                    <th>Filing Date</th>
+                                    <th>Next Hearing</th>
+                                    <th>Hearing Type</th>
+                                    <th>Action Taken</th>
+                                    <th>Location</th>
+                                    <th>Content of the Case</th>
+                                    <th>In Favor</th>
+                                    <th>Against</th>
+                                    <th>P/R</th>
+                                    <th>Lawyer</th>
+                                    <th>Organization</th>
+                                    <th>Parties</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>SCM-2023-001</td>
+                                    <td>Worker Compensation Claim</td>
+                                    <td>Labor Court</td>
+                                    <td>Labor Court Dhaka</td>
+                                    <td><span class="status active">Active</span></td>
+                                    <td>Jan 15, 2023</td>
+                                    <td>Apr 25, 2023</td>
+                                    <td>Preliminary</td>
+                                    <td>Filed petition</td>
+                                    <td>Dhaka</td>
+                                    <td>Claim for unpaid wages and benefits</td>
+                                    <td>Worker Union</td>
+                                    <td>ABC Corporation</td>
+                                    <td>P</td>
+                                    <td>Adv. Rahman</td>
+                                    <td>MoTI</td>
+                                    <td>Worker Union vs. ABC Corporation</td>
+                                    <td>Constitutional interpretation of Article 32</td>
+                                    <td class="actions">
+                                        <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>SCM-2023-045</td>
+                                    <td>Land Dispute Resolution</td>
+                                    <td>Civil Court</td>
+                                    <td>Civil Court Chittagong</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                    <td>Feb 10, 2023</td>
+                                    <td>May 18, 2023</td>
+                                    <td>Motion</td>
+                                    <td>Motion to dismiss filed</td>
+                                    <td>Chittagong</td>
+                                    <td>Dispute over land ownership documents</td>
+                                    <td>Landowner</td>
+                                    <td>Government</td>
+                                    <td>R</td>
+                                    <td>Adv. Choudhury</td>
+                                    <td>Dept. of Jute</td>
+                                    <td>Landowner vs. Government</td>
+                                    <td>Constitutional interpretation of Article 32</td>
+                                    <td class="actions">
+                                        <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>SCM-2023-112</td>
+                                    <td>Constitutional Matter</td>
+                                    <td>High Court</td>
+                                    <td>High Court Division</td>
+                                    <td><span class="status closed">Closed</span></td>
+                                    <td>Nov 5, 2022</td>
+                                    <td>-</td>
+                                    <td>Trial</td>
+                                    <td>Judgment delivered</td>
+                                    <td>Dhaka</td>
+                                    <td>Constitutional interpretation of Article 32</td>
+                                    <td>Citizen Group</td>
+                                    <td>State</td>
+                                    <td>P</td>
+                                    <td>Adv. Khan</td>
+                                    <td>Bangladesh Handloom Board</td>
+                                    <td>Citizen Group vs. State</td>
+                                    <td>Constitutional interpretation of Article 32</td>
+                                    <td class="actions">
+                                        <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <script src="js/auth.js"></script>
+
+    <!-- Case Details Modal -->
+    <div class="modal" id="caseDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="detailsModalTitle">Case Details</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="caseDetailsContent">
+                <!-- Details will be populated by JavaScript -->
+                <div class="case-detail-grid">
+                    <div class="detail-item">
+                        <label>Case Number:</label>
+                        <span>SCM-2023-001</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Title:</label>
+                        <span>Worker Compensation Claim</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Type:</label>
+                        <span>Labor Court</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Court:</label>
+                        <span>Labor Court Dhaka</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Status:</label>
+                        <span class="status active">Active</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Filing Date:</label>
+                        <span>Jan 15, 2023</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Next Hearing:</label>
+                        <span>Apr 25, 2023</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Hearing Type:</label>
+                        <span>Preliminary</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Action Taken:</label>
+                        <span>Filed petition</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Location:</label>
+                        <span>Dhaka</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Content:</label>
+                        <span>Claim for unpaid wages and benefits</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>In Favor:</label>
+                        <span>Worker Union</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Against:</label>
+                        <span>ABC Corporation</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>P/R:</label>
+                        <span>P</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Lawyer:</label>
+                        <span>Adv. Rahman</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Organization:</label>
+                        <span>MoTI</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Parties:</label>
+                        <span>Worker Union vs. ABC Corporation</span>
+                    </div>
+                    <div class="detail-item full-width">
+                        <label>Description:</label>
+                        <p>Constitutional interpretation of Article 32 regarding worker rights and compensation claims
+                            for unpaid wages and benefits dating back to 2022.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/cases-detail.js"></script>
-    <script src="js/dashboard.js"></script>
 </body>
+
 </html>

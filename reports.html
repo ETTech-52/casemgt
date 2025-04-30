@@ -5,42 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reports - Smart Case Management</title>
-    <!-- MAIN CSS FIRST -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- MODULE CSS SECOND -->
-    <link rel="stylesheet" href="css/dashboard.css">
-    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Add these to your head section -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-
+    <link rel="stylesheet" href="css/report.css">
 </head>
 
 <body>
     <div class="app-container">
-        <!-- Sidebar Navigation (same as dashboard) -->
-        <div class="sidebar">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <img src="assets/logo-small.png" alt="Logo">
                 <h3>Smart Case Management</h3>
             </div>
 
             <ul class="sidebar-menu">
-                <li class="active"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="case-management.html"><i class="fas fa-folder-open"></i> Case Management</a></li>
-                <li><a href="court-types.html"><i class="fas fa-gavel"></i> Court Types</a></li>
+                <li><a href="lists.html"><i class="fas fa-gavel"></i> Lists</a></li>
                 <li><a href="search.html"><i class="fas fa-search"></i> Search Cases</a></li>
                 <li><a href="user-management.html"><i class="fas fa-users"></i> User Management</a></li>
+                <li><a href="document-management.html"><i class="fas fa-file-alt"></i> <span>Document
+                            Management</span></a></li>
                 <li><a href="organizations.html"><i class="fas fa-building"></i> Organizations</a></li>
-                <li><a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
-                <li><a href="notifications.html"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li class="active"><a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                <li><a href="case-history.html"><i class="fas fa-history"></i> <span>Case History</span></a></li>
+                <li><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity
+                            Log</span></a></li>
+                <li><a href="account.html"><i class="fa-solid fa-user"></i><span>Account
+                            </span></a></li>
             </ul>
 
             <div class="sidebar-footer">
                 <div class="user-profile">
-                    <img src="assets/user-avatar.png" alt="User">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="avatar">
                     <div class="user-info">
                         <span class="username">Admin User</span>
                         <span class="role">Administrator</span>
@@ -49,7 +46,6 @@
                 <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
-        <!-- ... -->
 
         <!-- Main Content Area -->
         <div class="main-content">
@@ -58,9 +54,22 @@
                     <span>Reports</span>
                 </div>
                 <div class="top-bar-actions">
-                    <button class="btn-primary" id="generateReport">
+                    <!-- Generate Report Button -->
+                    <button onclick="document.getElementById('popup').style.display='block'" class="btn btn-primary"
+                        id="generateReport">
                         <i class="fas fa-file-export"></i> Generate Report
                     </button>
+
+                    <!-- Popup with Image -->
+                    <div id="popup" style="display: none;">
+                        <!-- Close Button inside Popup -->
+                        <span onclick="document.getElementById('popup').style.display='none'"
+                            style="cursor: pointer; position: absolute; top: 10px; right: 20px; font-size: 30px; color: white;">&times;</span>
+
+                        <!-- Image -->
+                        <img src="assets/report_1.jpg" alt="Popup Image" style="max-width: 100%; margin-bottom: 20px;">
+                    </div>
+
                 </div>
             </div>
 
@@ -75,11 +84,21 @@
                                 <label for="reportType">Report Type</label>
                                 <select id="reportType" required>
                                     <option value="">Select Report Type</option>
-                                    <option value="case_status">Case Status Report</option>
-                                    <option value="court_wise">Court-wise Distribution</option>
-                                    <option value="org_wise">Organization-wise Cases</option>
-                                    <option value="lawyer_performance">Lawyer Performance</option>
-                                    <option value="hearing_schedule">Hearing Schedule</option>
+                                    <option value="case_status">Single Org Report</option>
+                                    <option value="court_wise">Combined Org Report</option>
+                                    <option value="org_wise">Cabinate Division Report</option>
+                                    <option value="lawyer_performance">Laws/Rules/Policies Report</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="organization">Organization</label>
+                                <select id="organization" required>
+                                    <option value="">All Organizations</option>
+                                    <option value="bjmc">BJMC</option>
+                                    <option value="btmc">BTMC</option>
+                                    <option value="jute_board">Jute Board</option>
+                                    <option value="jri">JRI</option>
                                 </select>
                             </div>
 
@@ -98,7 +117,6 @@
                                 <select id="reportFormat" required>
                                     <option value="web">View in Browser</option>
                                     <option value="pdf">Download PDF</option>
-                                    <option value="csv">Download CSV</option>
                                     <option value="excel">Download Excel</option>
                                 </select>
                             </div>
@@ -108,91 +126,83 @@
 
                 <!-- Report Results -->
                 <div class="report-results">
+                    <!-- Case Status Summary Section -->
                     <div class="report-section">
                         <div class="section-header">
                             <h3>Case Status Summary</h3>
-                            <!-- <div class="report-actions">
-                                <button class="btn-outline"><i class="fas fa-print"></i> Print</button>
-                                <button class="btn-outline"><i class="fas fa-download"></i> Download</button>
-                            </div> -->
                         </div>
 
                         <div class="report-data">
                             <table class="report-table">
                                 <thead>
                                     <tr>
-                                        <th>Case Type</th>
-                                        <th>Total Cases</th>
-                                        <th>Active</th>
-                                        <th>Pending</th>
-                                        <th>Closed</th>
-                                        <th>% Completed</th>
+                                        <th data-label="Case Type">Case Type</th>
+                                        <th data-label="Total Cases">Total Cases</th>
+                                        <th data-label="Active">Active</th>
+                                        <th data-label="Pending">Pending</th>
+                                        <th data-label="Closed">Closed</th>
+                                        <th data-label="% Completed">% Completed</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Labor Court</td>
-                                        <td>395</td>
-                                        <td>120</td>
-                                        <td>45</td>
-                                        <td>230</td>
-                                        <td>58.2%</td>
+                                        <td data-label="Case Type">Labor Court</td>
+                                        <td data-label="Total Cases">395</td>
+                                        <td data-label="Active">120</td>
+                                        <td data-label="Pending">45</td>
+                                        <td data-label="Closed">230</td>
+                                        <td data-label="% Completed">58.2%</td>
                                     </tr>
                                     <tr>
-                                        <td>Civil Court</td>
-                                        <td>297</td>
-                                        <td>85</td>
-                                        <td>32</td>
-                                        <td>180</td>
-                                        <td>60.6%</td>
+                                        <td data-label="Case Type">Civil Court</td>
+                                        <td data-label="Total Cases">297</td>
+                                        <td data-label="Active">85</td>
+                                        <td data-label="Pending">32</td>
+                                        <td data-label="Closed">180</td>
+                                        <td data-label="% Completed">60.6%</td>
                                     </tr>
                                     <tr>
-                                        <td>High Court</td>
-                                        <td>360</td>
-                                        <td>110</td>
-                                        <td>50</td>
-                                        <td>200</td>
-                                        <td>55.6%</td>
+                                        <td data-label="Case Type">High Court</td>
+                                        <td data-label="Total Cases">360</td>
+                                        <td data-label="Active">110</td>
+                                        <td data-label="Pending">50</td>
+                                        <td data-label="Closed">200</td>
+                                        <td data-label="% Completed">55.6%</td>
                                     </tr>
                                     <tr>
-                                        <td>Contingent</td>
-                                        <td>193</td>
-                                        <td>54</td>
-                                        <td>29</td>
-                                        <td>110</td>
-                                        <td>57.0%</td>
+                                        <td data-label="Case Type">Contingent</td>
+                                        <td data-label="Total Cases">193</td>
+                                        <td data-label="Active">54</td>
+                                        <td data-label="Pending">29</td>
+                                        <td data-label="Closed">110</td>
+                                        <td data-label="% Completed">57.0%</td>
                                     </tr>
                                     <tr class="total-row">
-                                        <td><strong>Total</strong></td>
-                                        <td><strong>1,245</strong></td>
-                                        <td><strong>369</strong></td>
-                                        <td><strong>156</strong></td>
-                                        <td><strong>720</strong></td>
-                                        <td><strong>57.8%</strong></td>
+                                        <td data-label="Case Type"><strong>Total</strong></td>
+                                        <td data-label="Total Cases"><strong>1,245</strong></td>
+                                        <td data-label="Active"><strong>369</strong></td>
+                                        <td data-label="Pending"><strong>156</strong></td>
+                                        <td data-label="Closed"><strong>720</strong></td>
+                                        <td data-label="% Completed"><strong>57.8%</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Replace the "Organization-wise Case Distribution" section with this: -->
+                    <!-- Organization-wise Case Distribution Section -->
                     <div class="report-section">
                         <div class="section-header">
                             <h3>Organization-wise Case Distribution</h3>
                             <div class="report-actions">
-                                <button class="btn-outline" id="printOrgReport"><i class="fas fa-print"></i>
-                                    Print</button>
-                                <button onclick="document.getElementById('popup').style.display='block'"
-                                    class="btn-outline" id="downloadOrgReport"><i class="fas fa-download"></i>
-                                    Download</button>
-                            </div>
-                            <div id="popup" onclick="this.style.display='none'">
-                                <img src="assets/report_1.jpg" alt="Popup Image" style="margin-bottom: 20px !important;">
+                                <button class="btn btn-outline" id="downloadOrgReport">
+                                    <i class="fas fa-download"></i> Download
+                                </button>
                             </div>
                         </div>
 
                         <div class="report-data">
-                            <table class="report-table">
+                            <table class="report-table org-table">
                                 <thead>
                                     <tr>
                                         <th rowspan="2">Department / Agency</th>
@@ -204,7 +214,7 @@
                                         <th rowspan="2">Total Disposed</th>
                                         <th rowspan="2">Pending at Month-End</th>
                                     </tr>
-                                    <tr>
+                                    <tr class="nested-header">
                                         <th>High Court</th>
                                         <th>Lower Court</th>
                                         <th>High Court</th>
@@ -293,9 +303,14 @@
                 </div>
             </div>
         </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
 
-    <script src="js/auth.js"></script>
+
     <script src="js/reports.js"></script>
 </body>
 
