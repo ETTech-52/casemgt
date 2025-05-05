@@ -1,21 +1,21 @@
 
 
-//    // Toggle advanced search panel
-//    const advancedSearchToggle = document.getElementById('advancedSearchToggle');
-//    const advancedSearchPanel = document.getElementById('advancedSearchPanel');
+   // Toggle advanced search panel
+   const advancedSearchToggle = document.getElementById('advancedSearchToggle');
+   const advancedSearchPanel = document.getElementById('advancedSearchPanel');
 
-//    advancedSearchToggle.addEventListener('click', () => {
-//        advancedSearchPanel.classList.toggle('active');
-//        advancedSearchToggle.classList.toggle('active');
-//    });
+   advancedSearchToggle.addEventListener('click', () => {
+       advancedSearchPanel.classList.toggle('active');
+       advancedSearchToggle.classList.toggle('active');
+   });
 
-//    // Mobile menu toggle
-//    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-//    const sidebar = document.querySelector('.sidebar');
+   // Mobile menu toggle
+   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+   const sidebar = document.querySelector('.sidebar');
 
-//    mobileMenuToggle.addEventListener('click', () => {
-//        sidebar.classList.toggle('active');
-//    });
+   mobileMenuToggle.addEventListener('click', () => {
+       sidebar.classList.toggle('active');
+   });
 
 
 
