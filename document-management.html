@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Management - Smart Case Management</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/document-management.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/logo-small.png" alt="Logo">
+                <h3>Smart Case Management</h3>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="case-management.html"><i class="fas fa-folder-open"></i> Case Management</a></li>
+                <li><a href="lists.html"><i class="fas fa-gavel"></i> Lists</a></li>
+                <li><a href="user-management.html"><i class="fas fa-users"></i> User Management</a></li>
+
+                <li class="active"><a href="document-management.html"><i class="fas fa-file-alt"></i> <span>Documents
+                        </span></a></li>
+
+                <!-- Reports Dropdown -->
+                <div class="ac_accordion">
+                    <div class="ac_accordion-item">
+                        <input type="checkbox" id="reports" class="ac_accordion-toggle">
+                        <label for="reports" class="ac_accordion-trigger">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Reports</span>
+                            <i class="fas fa-chevron-down ac_arrow"></i>
+                        </label>
+                        <div class="ac_accordion-content">
+                            <a href="reports.html" class="ac_link">
+                                <i class="fas fa-building"></i>
+                                <span>Organizational Case Report</span>
+                            </a>
+                            <a href="cabinate-report.html" class="ac_link">
+                                <i class="fas fa-gavel"></i>
+                                <span>Cabinet/Law/Policy Report</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <li><a href="case-history.html"><i class="fas fa-history"></i> <span>Case History</span></a></li>
+                <li><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity
+                            Log</span></a></li>
+                <li><a href="account.html"><i class="fa-solid fa-user"></i><span>Account
+                        </span></a></li>
+            </ul>
+
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="avatar">
+                    <div class="user-info">
+                        <span class="username">Admin User</span>
+                        <span class="role">Administrator</span>
+                    </div>
+                </div>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+
+        <div class="main-content">
+            <div class="top-bar">
+                <div class="breadcrumb">
+                    <span>Document Management</span>
+                </div>
+                <div class="top-bar-actions">
+                    <button class="btn-primary" id="uploadDocumentBtn">
+                        <i class="fas fa-plus"></i> Create Folder
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-wrapper">
+                <div class="document-header">
+                    <h2 class="page-title">Organizational Folder</h2>
+                    <div class="document-actions">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search documents...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="org-grid">
+                        <!-- Sample Organization Cards -->
+                        <a href="case-folder.html">
+                            <div class="org-card" onclick="openOrganization('BJMC')">
+                                <div class="folder-icon">🗂️</div>
+                                <div class="org-name">BJMC</div>
+                                <div class="org-details">12 cases</div>
+                            </div>
+                        </a>
+                        <a href="case-folder.html">
+                            <div class="org-card" onclick="openOrganization('BLB')">
+                                <div class="folder-icon">🗂️</div>
+                                <div class="org-name">BLB</div>
+                                <div class="org-details">8 cases</div>
+                            </div>
+                        </a>
+                        <a href="case-folder.html">
+                            <div class="org-card" onclick="openOrganization('BTB')">
+                                <div class="folder-icon">🗂️</div>
+                                <div class="org-name">BTB</div>
+                                <div class="org-details">5 cases</div>
+                            </div>
+                        </a>
+                        <a href="case-folder.html">
+                            <div class="org-card" onclick="openOrganization('BHB')">
+                                <div class="folder-icon">🗂️</div>
+                                <div class="org-name">BHB</div>
+                                <div class="org-details">5 cases</div>
+                            </div>
+                        </a>
+                        <a href="case-folder.html">
+                            <div class="org-card" onclick="openOrganization('BKB')">
+                                <div class="folder-icon">🗂️</div>
+                                <div class="org-name">BKB</div>
+                                <div class="org-details">5 cases</div>
+                            </div>
+                        </a>
+
+                        <!-- Add New Organization Card -->
+                        <div class="org-card add-org" onclick="openAddOrgModal()">
+                            <div class="add-icon">+</div>
+                            <div>Add Organization</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Document Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Document</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm">
+                    <div class="upload-area" id="dropZone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop files here or click to browse</p>
+                        <input type="file" id="fileInput" multiple style="display: none;">
+                        <button type="button" class="btn-secondary" id="browseBtn">Browse Files</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="documentName">Document Name</label>
+                        <input type="text" id="documentName" placeholder="Enter document name">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="documentType">Document Type</label>
+                            <select id="documentType">
+                                <option value="">Select type</option>
+                                <option value="pleading">Pleading</option>
+                                <option value="evidence">Evidence</option>
+                                <option value="motion">Motion</option>
+                                <option value="order">Court Order</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="documentFolder">Folder</label>
+                            <select id="documentFolder">
+                                <option value="">Root Folder</option>
+                                <option value="court-filings">Court Filings</option>
+                                <option value="evidence">Evidence</option>
+                                <option value="correspondence">Correspondence</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="documentDescription">Description (Optional)</label>
+                        <textarea id="documentDescription" rows="3" placeholder="Add a description..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel close-modal">Cancel</button>
+                        <button type="submit" class="btn-primary">Upload Document</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- <script src="js/document-management.js"></script> -->
+
+</body>
+
+</html>

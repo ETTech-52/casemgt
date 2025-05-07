@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Smart Case Management</title>
+    <!-- MAIN CSS FIRST -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- MODULE CSS SECOND -->
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Simple login override for testing
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Basic validation
+            if (username === "admin" && password === "admin123") {
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Please enter both username and password");
+            }
+        }
+
+        // Attach to form
+        document.getElementById('loginForm').onsubmit = function (e) {
+            e.preventDefault();
+            handleLogin();
+        };
+    </script>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="assets/logo.png" alt="Ministry of Textiles and Jute Logo">
+            <h1>Smart Case Management System</h1>
+            <p>Ministry of Textiles and Jute, Bangladesh</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <div class="form-options">
+                <label>
+                    <input type="checkbox" id="rememberMe"> Remember me
+                </label>
+                <a href="#" id="forgotPassword">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+
+</html>
