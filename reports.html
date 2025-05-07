@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reports - Smart Case Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./css/report.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -22,17 +23,34 @@
                 <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="case-management.html"><i class="fas fa-folder-open"></i> Case Management</a></li>
                 <li><a href="lists.html"><i class="fas fa-gavel"></i> Lists</a></li>
-                <li><a href="search.html"><i class="fas fa-search"></i> Search Cases</a></li>
                 <li><a href="user-management.html"><i class="fas fa-users"></i> User Management</a></li>
-                <li><a href="document-management.html"><i class="fas fa-file-alt"></i> <span>Document
-                            Management</span></a></li>
-                <li><a href="organizations.html"><i class="fas fa-building"></i> Organizations</a></li>
-                <li class="active"><a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                <li><a href="org-folder.html"><i class="fas fa-file-alt"></i> <span>Documents</span></a></li>
+
+                <!-- Reports Dropdown -->
+                <div class="ac_accordion">
+                    <div class="ac_accordion-item active">
+                        <input type="checkbox" id="reports" class="ac_accordion-toggle">
+                        <label for="reports" class="ac_accordion-trigger">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Reports</span>
+                            <i class="fas fa-chevron-down ac_arrow"></i>
+                        </label>
+                        <div class="ac_accordion-content">
+                            <a href="reports.html" class="ac_link">
+                                <i class="fas fa-building"></i>
+                                <span>Organizational Case Report</span>
+                            </a>
+                            <a href="cabinate-report.html" class="ac_link">
+                                <i class="fas fa-gavel"></i>
+                                <span>Cabinet/Law/Policy Report</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <li><a href="case-history.html"><i class="fas fa-history"></i> <span>Case History</span></a></li>
-                <li><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity
-                            Log</span></a></li>
-                <li><a href="account.html"><i class="fa-solid fa-user"></i><span>Account
-                        </span></a></li>
+                <li><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity Log</span></a></li>
+                <li><a href="account.html"><i class="fa-solid fa-user"></i><span>Account</span></a></li>
             </ul>
 
             <div class="sidebar-footer">
@@ -139,7 +157,7 @@
                                         <th data-label="Case Type">Case Type</th>
                                         <th data-label="Total Cases">Total Cases</th>
                                         <th data-label="Active">Active</th>
-                                        <th data-label="Pending">Pending</th>
+
                                         <th data-label="Closed">Closed</th>
                                         <th data-label="% Completed">% Completed</th>
                                     </tr>
@@ -149,7 +167,6 @@
                                         <td data-label="Case Type">Labor Court</td>
                                         <td data-label="Total Cases">395</td>
                                         <td data-label="Active">120</td>
-                                        <td data-label="Pending">45</td>
                                         <td data-label="Closed">230</td>
                                         <td data-label="% Completed">58.2%</td>
                                     </tr>
@@ -157,7 +174,6 @@
                                         <td data-label="Case Type">Civil Court</td>
                                         <td data-label="Total Cases">297</td>
                                         <td data-label="Active">85</td>
-                                        <td data-label="Pending">32</td>
                                         <td data-label="Closed">180</td>
                                         <td data-label="% Completed">60.6%</td>
                                     </tr>
@@ -165,7 +181,6 @@
                                         <td data-label="Case Type">High Court</td>
                                         <td data-label="Total Cases">360</td>
                                         <td data-label="Active">110</td>
-                                        <td data-label="Pending">50</td>
                                         <td data-label="Closed">200</td>
                                         <td data-label="% Completed">55.6%</td>
                                     </tr>
@@ -173,7 +188,6 @@
                                         <td data-label="Case Type">Contingent</td>
                                         <td data-label="Total Cases">193</td>
                                         <td data-label="Active">54</td>
-                                        <td data-label="Pending">29</td>
                                         <td data-label="Closed">110</td>
                                         <td data-label="% Completed">57.0%</td>
                                     </tr>
@@ -181,7 +195,6 @@
                                         <td data-label="Case Type"><strong>Total</strong></td>
                                         <td data-label="Total Cases"><strong>1,245</strong></td>
                                         <td data-label="Active"><strong>369</strong></td>
-                                        <td data-label="Pending"><strong>156</strong></td>
                                         <td data-label="Closed"><strong>720</strong></td>
                                         <td data-label="% Completed"><strong>57.8%</strong></td>
                                     </tr>

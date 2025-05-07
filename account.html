@@ -20,17 +20,38 @@
                 <img src="assets/logo-small.png" alt="Logo">
                 <h3>Smart Case Management</h3>
             </div>
+            <!-- Sidebar  -->
             <ul class="sidebar-menu">
                 <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li><a href="case-management.html"><i class="fas fa-folder-open"></i><span>Case Management</span></a>
                 </li>
                 <li><a href="lists.html"><i class="fas fa-gavel"></i><span>Lists</span></a></li>
-                <li><a href="search.html"><i class="fas fa-search"></i><span>Search Cases</span></a></li>
                 <li><a href="user-management.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
-                <li><a href="document-management.html"><i class="fas fa-file-alt"></i><span>Document
-                            Management</span></a></li>
-                <li><a href="organizations.html"><i class="fas fa-building"></i><span>Organizations</span></a></li>
-                <li><a href="reports.html"><i class="fas fa-chart-bar"></i><span>Reports</span></a></li>
+                <li><a href="org-folder.html"><i class="fas fa-file-alt"></i><span>Documents
+                        </span></a></li>
+
+                <!-- Reports Dropdown -->
+                <div class="ac_accordion">
+                    <div class="ac_accordion-item">
+                        <input type="checkbox" id="reports" class="ac_accordion-toggle">
+                        <label for="reports" class="ac_accordion-trigger">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Reports</span>
+                            <i class="fas fa-chevron-down ac_arrow"></i>
+                        </label>
+                        <div class="ac_accordion-content">
+                            <a href="reports.html" class="ac_link">
+                                <i class="fas fa-building"></i>
+                                <span>Organizational Case Report</span>
+                            </a>
+                            <a href="cabinate-report.html" class="ac_link">
+                                <i class="fas fa-gavel"></i>
+                                <span>Cabinet/Law/Policy Report</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <li><a href="case-history.html"><i class="fas fa-history"></i><span>Case History</span></a></li>
                 <li><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity
                             Log</span></a></li>
@@ -76,10 +97,6 @@
                         <i class="fas fa-shield-alt"></i>
                         Security
                     </a>
-                    <a href="#" class="nav-item" data-tab="billing">
-                        <i class="fas fa-credit-card"></i>
-                        Billing
-                    </a>
                     <a href="#" class="nav-item" data-tab="settings">
                         <i class="fas fa-cog"></i>
                         Settings
@@ -97,9 +114,6 @@
                 <div class="tab-content active" id="profile-tab">
                     <div class="header">
                         <h1 class="title">Account Profile</h1>
-                        <button class="btn btn-primary">
-                            <i class="fas fa-save"></i> Save Changes
-                        </button>
                     </div>
 
                     <!-- Profile Information Section -->
@@ -291,6 +305,7 @@
             });
         });
     </script>
+    <script src="js/account.js"></script>
 </body>
 
 </html>

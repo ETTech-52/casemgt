@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- GOOGLE FONTS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,12 +29,31 @@
                 <li><a href="case-management.html"><i class="fas fa-folder-open"></i> <span>Case
                             Management</span></a></li>
                 <li><a href="lists.html"><i class="fas fa-gavel"></i> <span>Lists</span></a></li>
-                <li><a href="search.html"><i class="fas fa-search"></i> <span>Search Cases</span></a></li>
                 <li><a href="user-management.html"><i class="fas fa-users"></i> <span>User Management</span></a></li>
-                <li><a href="document-management.html"><i class="fas fa-file-alt"></i> <span>Document
-                            Management</span></a></li>
-                <li><a href="organizations.html"><i class="fas fa-building"></i> <span>Organizations</span></a></li>
-                <li><a href="reports.html"><i class="fas fa-chart-bar"></i> <span>Reports</span></a></li>
+                <li><a href="org-folder.html"><i class="fas fa-file-alt"></i> <span>Documents
+                        </span></a></li>
+                <!-- Reports Dropdown -->
+                <div class="ac_accordion">
+                    <div class="ac_accordion-item">
+                        <input type="checkbox" id="reports" class="ac_accordion-toggle">
+                        <label for="reports" class="ac_accordion-trigger">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Reports</span>
+                            <i class="fas fa-chevron-down ac_arrow"></i>
+                        </label>
+                        <div class="ac_accordion-content">
+                            <a href="reports.html" class="ac_link">
+                                <i class="fas fa-building"></i>
+                                <span>Organizational Case Report</span>
+                            </a>
+                            <a href="cabinate-report.html" class="ac_link">
+                                <i class="fas fa-gavel"></i>
+                                <span>Cabinet/Law/Policy Report</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <li><a href="case-history.html"><i class="fas fa-history"></i> <span>Case History</span></a></li>
                 <li><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity
                             Log</span></a></li>
@@ -72,9 +92,8 @@
             <div class="content-wrapper">
 
                 <!-- Search Filters -->
-                <form id="searchForm" action="search.html" method="get">
+                <!-- <form id="searchForm" action="search.html" method="get">
                     <div class="filter-container">
-                        <!-- Row 1 -->
                         <div class="filter-row">
                             <div class="filter-group">
                                 <input type="text" name="caseNumber" placeholder=" " class="filter-input" />
@@ -106,7 +125,7 @@
                             </div>
                         </div>
 
-                        <!-- Row 2 -->
+                
                         <div class="filter-row">
                             <div class="filter-group">
                                 <select name="status" class="filter-select">
@@ -152,7 +171,7 @@
                             </div>
                         </div>
 
-                        <!-- Action Buttons -->
+                 
                         <div class="action-buttons">
                             <button type="submit" class="btn btn-primary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -174,7 +193,119 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> -->
+
+
+                <!-- Search Section -->
+                <div class="search-section">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search by case number, title, or keywords..."
+                            class="search-input" id="mainSearchInput">
+                        <button class="search-btn" id="mainSearchBtn">Search</button>
+                    </div>
+                    <button class="advanced-search-toggle" id="advancedSearchToggle">
+                        <i class="fas fa-chevron-down"></i> Advanced Search Options
+                    </button>
+
+                    <div class="advanced-search-panel" id="advancedSearchPanel">
+                        <div class="search-grid">
+                            <div class="search-group">
+                                <label>Court Type</label>
+                                <select id="courtTypeFilter">
+                                    <option value="">All Types</option>
+                                    <option value="labor">Labor Court</option>
+                                    <option value="civil">Civil Court</option>
+                                    <option value="high">High Court</option>
+                                    <option value="contingent">Contingent</option>
+                                    <option value="contempt">Contempt</option>
+                                    <option value="administrative">Administrative Tribunal</option>
+                                    <option value="appeal">Appeal Tribunal</option>
+                                </select>
+                            </div>
+
+                            <div class="search-group">
+                                <label>Case Type</label>
+                                <input type="text" id="caseTypeFilter" placeholder="Case type...">
+                            </div>
+
+                            <div class="search-group">
+                                <label>Case Type</label>
+                                <select name="caseType" class="filter-select">
+                                    <option value="" selected disabled></option>
+                                    <option value="Civil">Civil</option>
+                                    <option value="Criminal">Criminal</option>
+                                    <option value="Writ">Writ</option>
+                                </select>
+                                <span class="focus-border"></span>
+                            </div>
+
+                            <div class="search-group">
+                                <label>Status</label>
+                                <select id="statusFilter">
+                                    <option value="">All Statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="closed">Closed</option>
+                                </select>
+                            </div>
+
+                            <div class="search-group">
+                                <label>Date From</label>
+                                <input type="date" id="dateFromFilter">
+                            </div>
+
+                            <div class="search-group">
+                                <label>Date To</label>
+                                <input type="date" id="dateToFilter">
+                            </div>
+
+                            <div class="search-group">
+                                <label>Lawyer</label>
+                                <input type="text" id="lawyerFilter" placeholder="Lawyer name...">
+                            </div>
+
+                            <div class="search-group">
+                                <label>Organization</label>
+                                <select id="organizationFilter">
+                                    <option value="">All Organizations</option>
+                                    <option value="MoTI">MoTI</option>
+                                    <option value="Dept. of Jute">Dept. of Jute</option>
+                                    <option value="Bangladesh Handloom Board">Bangladesh Handloom Board</option>
+                                    <option value="MoEFCC">MoEFCC</option>
+                                    <option value="NBR">NBR</option>
+                                    <option value="ICT Division">ICT Division</option>
+                                </select>
+                            </div>
+
+                            <div class="search-group">
+                                <label>Location</label>
+                                <input type="text" id="locationFilter" placeholder="Location...">
+                            </div>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button type="submit" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg>
+                                Search
+                            </button>
+                            <button type="reset" class="btn btn-secondary reset-btn ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
+                                    <path
+                                        d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
+                                </svg>
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
 
 
                 <!-- Statistics Cards -->
@@ -229,18 +360,27 @@
                 <div class="cards-container">
                     <a href="cases-detail.html" class="link-card">
                         <div class="card">
-                            <div class="icon bg-blue"><i class="fas fa-gavel"></i></div>
+                            <div class="icon bg-red"><i class="fas fa-user-tie"></i></div>
                             <div class="details">
-                                <div class="title">Labor Court</div>
+                                <div class="title">Administrative Tribunal</div>
                             </div>
                         </div>
                     </a>
 
                     <a href="cases-detail.html" class="link-card">
                         <div class="card">
-                            <div class="icon bg-teal"><i class="fas fa-balance-scale"></i></div>
+                            <div class="icon bg-navy"><i class="fas fa-undo-alt"></i></div>
                             <div class="details">
-                                <div class="title">Civil Court</div>
+                                <div class="title">Appeal Tribunal</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="cases-detail.html" class="link-card">
+                        <div class="card">
+                            <div class="icon bg-blue"><i class="fas fa-gavel"></i></div>
+                            <div class="details">
+                                <div class="title">Labor Court</div>
                             </div>
                         </div>
                     </a>
@@ -265,31 +405,21 @@
 
                     <a href="cases-detail.html" class="link-card">
                         <div class="card">
-                            <div class="icon bg-red"><i class="fas fa-user-tie"></i></div>
+                            <div class="icon bg-teal"><i class="fas fa-balance-scale"></i></div>
                             <div class="details">
-                                <div class="title">Administrative Tribunal</div>
+                                <div class="title">Civil Court</div>
                             </div>
                         </div>
                     </a>
 
-
-                    <a href="cases-detail.html" class="link-card">
+                    <!-- <a href="cases-detail.html" class="link-card">
                         <div class="card">
                             <div class="icon bg-green"><i class="fas fa-file-alt"></i></div>
                             <div class="details">
                                 <div class="title">Land Dispute</div>
                             </div>
                         </div>
-                    </a>
-
-                    <a href="cases-detail.html" class="link-card">
-                        <div class="card">
-                            <div class="icon bg-navy"><i class="fas fa-undo-alt"></i></div>
-                            <div class="details">
-                                <div class="title">Appeal Tribunal</div>
-                            </div>
-                        </div>
-                    </a>
+                    </a> -->
 
                     <a href="cases-detail.html" class="link-card">
                         <div class="card">
@@ -301,116 +431,129 @@
                     </a>
                 </div>
 
-                <!-- Today's Hearing -->
-                <div class="dashboard-container">
-                    <div class="today_head section-header">
-                        <h3>Today's Hearing Cases</h3>
+                <!-- Today's Hearing with Toggle -->
+                <div class="dashboard-container collapsible">
+                    <div class="today_head section-header" onclick="toggleSection(this)">
+                        <div class="header-content">
+                            <h3>Today's Hearing Cases</h3>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
                         <a href="cases-detail.html" class="view-all">View All</a>
                     </div>
-                    <div class="table-responsive">
-                        <table class="casesTable">
-                            <thead>
-                                <tr class="recent_head">
-                                    <th>Case No.</th>
-                                    <th>Case</th>
-                                    <th>Court Type</th>
-                                    <th>Status</th>
-                                    <th>Next Hearing</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="recent_data">
-                                    <td>SCM-2023-001</td>
-                                    <td>Labor</td>
-                                    <td>Labor Court Dhaka</td>
-                                    <td><span class="status active">Active</span></td>
-                                    <td>15 Apr 2023</td>
-                                    <td class="actions">
-                                        <button class="view-btn"><i class="fas fa-eye"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="recent_data">
-                                    <td>SCM-2023-045</td>
-                                    <td>Civil</td>
-                                    <td>Civil Court Chittagong</td>
-                                    <td><span class="status pending">Pending</span></td>
-                                    <td>18 Apr 2023</td>
-                                    <td class="actions">
-                                        <button class="view-btn"><i class="fas fa-eye"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="recent_data">
-                                    <td>SCM-2023-112</td>
-                                    <td>High Court</td>
-                                    <td>High Court Division</td>
-                                    <td><span class="status closed">Closed</span></td>
-                                    <td>-</td>
-                                    <td class="actions">
-                                        <button class="view-btn"><i class="fas fa-eye"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="recent_data">
-                                    <td>SCM-2023-078</td>
-                                    <td>Contingent</td>
-                                    <td>Special Court Dhaka</td>
-                                    <td><span class="status active">Active</span></td>
-                                    <td>20 Apr 2023</td>
-                                    <td class="actions">
-                                        <button class="view-btn"><i class="fas fa-eye"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="collapsible-content">
+                        <div class="table-responsive">
+                            <table class="cases-table">
+                                <thead>
+                                    <tr>
+                                        <th>Case No.</th>
+                                        <th>Title</th>
+                                        <th>Court</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CAS-2023-001</td>
+                                        <td>State vs. John Doe</td>
+                                        <td>High Court</td>
+                                        <td>10:30 AM</td>
+                                        <td><span class="status-badge pending">Pending</span></td>
+                                        <td>
+                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CAS-2023-015</td>
+                                        <td>Smith & Co. vs. Tech Corp</td>
+                                        <td>Civil Court</td>
+                                        <td>11:45 AM</td>
+                                        <td><span class="status-badge in-progress">In Progress</span></td>
+                                        <td>
+                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CAS-2023-042</td>
+                                        <td>Labor Union vs. Factory Ltd</td>
+                                        <td>Labor Court</td>
+                                        <td>02:15 PM</td>
+                                        <td><span class="status-badge scheduled">Scheduled</span></td>
+                                        <td>
+                                            <button class="action-btn"><i class="fas fa-eye"></i></button>
+                                            <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Upcoming Hearings -->
-                <div class="container upcoming">
+                <!-- Upcoming Hearings with Toggle -->
+                <div class="container upcoming collapsible">
                     <div class="upcoming-hearings">
-                        <div class="section-header">
-                            <h3>Upcoming Hearings</h3>
+                        <div class="section-header" onclick="toggleSection(this)">
+                            <div class="header-content">
+                                <h3>Upcoming Hearings</h3>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
                             <a href="cases-detail.html" class="view-all">View All</a>
                         </div>
-                        <div class="hearings-list">
-                            <div class="hearing-item">
-                                <div class="hearing-date">
-                                    <span class="day">25</span>
-                                    <span class="month">Apr</span>
-                                </div>
-                                <div class="hearing-info">
-                                    <h4>Case #SCM-2023-001</h4>
-                                    <p>Worker Compensation Claim</p>
-                                    <div class="hearing-meta">
-                                        <span><i class="fas fa-gavel"></i> Labor Court Dhaka</span>
-                                        <span><i class="fas fa-user-tie"></i> Judge: Mr. Rahman</span>
+                        <div class="collapsible-content">
+                            <div class="hearings-list">
+                                <div class="hearing-card">
+                                    <div class="hearing-date">
+                                        <span class="day">06</span>
+                                        <span class="month">May</span>
+                                    </div>
+                                    <div class="hearing-details">
+                                        <h4>CAS-2023-089 - Environmental Protection vs. Industrial Corp</h4>
+                                        <p><i class="fas fa-gavel"></i> Supreme Court</p>
+                                        <p><i class="far fa-clock"></i> 09:30 AM</p>
+                                    </div>
+                                    <div class="hearing-status">
+                                        <span class="status-badge upcoming">Upcoming</span>
                                     </div>
                                 </div>
-                                <div class="hearing-actions">
-                                    <a href="case-details.html?case=SCM-2023-001" class="view-details">View Details</a>
-                                </div>
-                            </div>
 
-                            <div class="hearing-item">
-                                <div class="hearing-date">
-                                    <span class="day">25</span>
-                                    <span class="month">Apr</span>
-                                </div>
-                                <div class="hearing-info">
-                                    <h4>Case #SCM-2023-002</h4>
-                                    <p>Criminal Case</p>
-                                    <div class="hearing-meta">
-                                        <span><i class="fas fa-gavel"></i> Labor Court Dhaka</span>
-                                        <span><i class="fas fa-user-tie"></i> Judge: Mr. Rahman</span>
+                                <div class="hearing-card">
+                                    <div class="hearing-date">
+                                        <span class="day">07</span>
+                                        <span class="month">May</span>
+                                    </div>
+                                    <div class="hearing-details">
+                                        <h4>CAS-2023-092 - Property Dispute Resolution</h4>
+                                        <p><i class="fas fa-gavel"></i> Civil Court</p>
+                                        <p><i class="far fa-clock"></i> 11:00 AM</p>
+                                    </div>
+                                    <div class="hearing-status">
+                                        <span class="status-badge scheduled">Scheduled</span>
                                     </div>
                                 </div>
-                                <div class="hearing-actions">
-                                    <a href="case-details.html?case=SCM-2023-002" class="view-details">View Details</a>
+
+                                <div class="hearing-card">
+                                    <div class="hearing-date">
+                                        <span class="day">08</span>
+                                        <span class="month">May</span>
+                                    </div>
+                                    <div class="hearing-details">
+                                        <h4>CAS-2023-095 - Public Interest Litigation</h4>
+                                        <p><i class="fas fa-gavel"></i> High Court</p>
+                                        <p><i class="far fa-clock"></i> 02:30 PM</p>
+                                    </div>
+                                    <div class="hearing-status">
+                                        <span class="status-badge pending">Pending</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -421,6 +564,7 @@
     </button>
 
     <script src="js/dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

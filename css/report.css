@@ -42,9 +42,9 @@ html {
 
 /* Sidebar Styles - Mobile First */
 
-.sidebar.active {
+/* .sidebar.active {
     left: 0;
-}
+} */
 
 .sidebar-header {
     padding: 20px;
@@ -85,7 +85,7 @@ html {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     transition: var(--transition);
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .sidebar-menu a:hover {
@@ -154,14 +154,6 @@ html {
 }
 
 
-div#popup {
-    position: absolute;
-    right: 147px;
-    top: 50%;
-    background: #dfdfdf;
-    padding: 18px;
-    border-radius: 10px;
-}
 
 /* Main Content Styles */
 .main-content {
@@ -636,4 +628,144 @@ div#popup {
     .mobile-menu-toggle {
         display: flex;
     }
+}
+
+
+
+/* Accordion Styles */
+.ac_accordion {
+    width: 100%;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.ac_accordion-item {
+    position: relative;
+}
+
+.ac_accordion-toggle {
+    display: none;
+}
+
+/* Accordion Trigger Button - Default State */
+.ac_accordion-trigger {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.8);
+    border-left: 3px solid transparent;
+}
+
+.ac_accordion-trigger i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+}
+
+.ac_arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Active States for Accordion */
+.ac_accordion-toggle:checked+.ac_accordion-trigger {
+    background-color: rgba(67, 97, 238, 0.2);
+    color: white;
+    border-left: 3px solid var(--primary);
+}
+
+/* Keep accordion active when link inside is active */
+.ac_accordion-item:has(.ac_link.active) .ac_accordion-trigger {
+    background-color: rgba(67, 97, 238, 0.2);
+    color: white;
+    border-left: 3px solid var(--primary);
+}
+
+/* Arrow rotation on active */
+.ac_accordion-toggle:checked+.ac_accordion-trigger .ac_arrow {
+    transform: rotate(180deg);
+}
+
+/* Content area */
+.ac_accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.ac_accordion-toggle:checked~.ac_accordion-content {
+    max-height: 500px;
+}
+
+/* Links inside accordion - Default State */
+.ac_link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 52px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.ac_link i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+}
+
+.ac_accordion-item.active  {
+    background-color: rgba(67, 97, 238, 0.2);
+    color: white;
+    border-left: 3px solid var(--primary);
+}
+
+
+/* Active state for links */
+.ac_link.active {
+    background-color: rgba(67, 97, 238, 0.2);
+    color: white;
+    border-left: 3px solid var(--primary);
+}
+
+/* Hover states */
+.ac_accordion-trigger:hover:not(:has(+ .ac_accordion-content:has(.ac_link.active))) {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.ac_link:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+
+.ac_accordion-toggle:checked~.ac_accordion-content{
+    max-height: 500px;
+    background: gray;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+a.ac_link {
+    font-size: 14px;
+    border: none !important;
+}
+
+
+
+.ac_accordion-toggle:checked~.ac_accordion-content{
+    max-height: 500px;
+    background: gray;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+a.ac_link {
+    font-size: 14px;
+    border: none !important;
 }
