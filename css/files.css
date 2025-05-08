@@ -237,7 +237,8 @@ html {
 }
 
 /* Date Range Specific Styles */
-.date-group {
+
+ .date-group {
     position: relative;
     margin-bottom: 20px;
 }
@@ -282,9 +283,8 @@ html {
     color: #666;
     background: white;
     padding: 0 4px;
-    /* transition: all 0.3s ease; */
     pointer-events: none;
-}
+} 
 
 /* Focus states */
 .date-input input[type="date"]:focus {
@@ -1413,7 +1413,7 @@ html {
     text-align: center;
 }
 
-.ac_accordion-toggle:checked~.ac_accordion-content{
+.ac_accordion-toggle:checked~.ac_accordion-content {
     max-height: 500px;
     background: gray;
     border-radius: 10px;
@@ -1423,4 +1423,30 @@ html {
 a.ac_link {
     font-size: 14px;
     border: none !important;
+}
+
+
+
+i.fas.fa-download {
+    font-size: 18px;
+    color: #2bb42b;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+button.action-btn.download,
+button.action-btn.view {
+    border: none;
+    background: #80808000;
+}
+
+i.fa-solid.fa-trash {
+    font-size: 18px;
+    color: #961414;
+    cursor: pointer;
+}
+
+button.action-btn.more {
+    border: none;
+    background: #80808000;
 }
