@@ -612,27 +612,29 @@ form#searchForm {
     color: white;
 }
 
-/* Case types */
+/* COURT WISE */
 
+/* Cards Container and Card Styles */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     width: 100%;
     margin: 30px auto;
     background-color: rgb(255, 255, 255);
     padding: 15px;
     border-radius: 10px;
-    gap: 13px;
+    gap: 15px;
 }
 
 .link-card {
-    flex: 1 1 calc(25% - 16px);
-    min-width: 200px;
+    width: 100%;
+    min-width: unset;
 }
 
 a.link-card,
 a.stat-card {
     text-decoration: none;
+    display: block;
 }
 
 .card {
@@ -675,6 +677,40 @@ a.stat-card {
     word-break: break-word;
 }
 
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 12px;
+        gap: 12px;
+        margin: 20px auto;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .icon {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        font-size: 20px;
+        margin-right: 12px;
+    }
+
+    .details .title {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 10px;
+        margin: 15px auto;
+    }
+}
 
 
 
@@ -1201,6 +1237,7 @@ a.stat-card {
 
 
 
+
 /* Main Content Styles */
 .main-content {
     flex: 1;
@@ -1358,6 +1395,11 @@ a.stat-card {
     background-color: var(--light-gray);
 }
 
+a.stat-card {
+    display: flex !important;
+}
+
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .filter-row {
@@ -1496,8 +1538,8 @@ a.stat-card {
 
 
 
+
 /* dropdown-menu  */
-/* Accordion Styles */
 .ac_accordion {
     width: 100%;
     color: rgba(255, 255, 255, 0.8);
@@ -1589,4 +1631,208 @@ a.stat-card {
     margin-right: 12px;
     width: 20px;
     text-align: center;
+}
+
+
+
+
+
+/* Main Layout Responsive Adjustments */
+@media (max-width: 991px) {
+    .main-content {
+        margin-left: 0;
+    }
+
+    .content-wrapper {
+        padding: 15px;
+    }
+
+    .top-bar {
+        padding: 15px;
+    }
+
+    /* Stats Row */
+    .stats-row {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    /* Court Wise Cards */
+    .cards-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Top Bar */
+    .top-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .top-bar-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    /* Stats Cards */
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .stat-info h3 {
+        font-size: 16px;
+    }
+
+    .stat-info p {
+        font-size: 13px;
+    }
+
+    /* Search Section */
+    .search-section {
+        padding: 15px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .search-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Today's Hearing Table */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .cases-table {
+        min-width: 750px;
+    }
+
+    .cases-table th,
+    .cases-table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Upcoming Hearings */
+    .hearing-card {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .hearing-date {
+        align-items: flex-start;
+        flex-direction: row;
+        gap: 5px;
+    }
+
+    .hearing-details h4 {
+        font-size: 15px;
+    }
+
+    .hearing-details p {
+        font-size: 13px;
+    }
+
+    .hearing-status {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* Stats Cards */
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Court Wise Cards */
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Page Headers */
+    .page-title {
+        font-size: 18px;
+    }
+
+    /* Section Headers */
+    .section-header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .header-content {
+        /* width: 100%; */
+        justify-content: space-between;
+    }
+
+    /* Status Badges */
+    .status-badge {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    /* Action Buttons */
+    .action-btn {
+        padding: 5px;
+    }
+
+    /* Advanced Search */
+    .advanced-search-panel {
+        padding: 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* Utility Classes for Better Mobile Display */
+@media (max-width: 768px) {
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .full-width-on-mobile {
+        width: 100% !important;
+    }
+
+    .text-center-on-mobile {
+        text-align: center;
+    }
 }
