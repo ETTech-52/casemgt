@@ -8,275 +8,6 @@
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="css/case-folder.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #4285F4;
-      --folder-color: #E8F0FE;
-      --hover: #f1f3f4;
-      --shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px rgba(60, 64, 67, 0.15);
-    }
-
-    * {
-      box-sizing: border-box;
-      font-family: 'Google Sans', Roboto, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: #f8f9fa;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      padding: 24px;
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #dadce0;
-    }
-
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .folder-icon {
-      font-size: 32px;
-      color: var(--primary);
-    }
-
-    .header-info h1 {
-      color: #202124;
-      font-weight: 500;
-      font-size: 24px;
-      margin-bottom: 4px;
-    }
-
-    .header-info .breadcrumb {
-      color: #5f6368;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .breadcrumb a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    .breadcrumb a:hover {
-      text-decoration: underline;
-    }
-
-    .add-case-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-      font-weight: 500;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .add-case-btn:hover {
-      background: #3367d6;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
-    .cases-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
-
-    .case-card {
-      background: white;
-      border-radius: 8px;
-      padding: 16px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: 1px solid #dadce0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .case-card:hover {
-      box-shadow: var(--shadow);
-      border-color: var(--primary);
-      background-color: var(--hover);
-    }
-
-    .case-icon {
-      font-size: 40px;
-      margin-bottom: 12px;
-      color: var(--primary);
-      text-align: center;
-    }
-
-    .case-name {
-      font-weight: 500;
-      color: #202124;
-      margin-bottom: 8px;
-      word-break: break-word;
-    }
-
-    .case-meta {
-      font-size: 12px;
-      color: #5f6368;
-      margin-top: auto;
-    }
-
-    .case-date {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      margin-bottom: 4px;
-    }
-
-    .case-docs {
-      background: var(--folder-color);
-      padding: 3px 8px;
-      border-radius: 12px;
-      display: inline-block;
-    }
-
-    .search-bar {
-      margin-bottom: 24px;
-      display: flex;
-      gap: 12px;
-    }
-
-    .search-input {
-      flex: 1;
-      padding: 10px 16px;
-      border: 1px solid #dadce0;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-
-    .search-input:focus {
-      border-color: var(--primary);
-      outline: none;
-    }
-
-    .filter-select {
-      padding: 10px;
-      border: 1px solid #dadce0;
-      border-radius: 4px;
-      font-size: 14px;
-      background: white;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 100;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 24px;
-      border-radius: 8px;
-      width: 500px;
-      max-width: 90%;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.24);
-    }
-
-    .modal h3 {
-      margin-bottom: 20px;
-      color: #202124;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .modal h3::before {
-      content: '📂';
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: #3c4043;
-      font-size: 14px;
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #dadce0;
-      border-radius: 4px;
-      font-size: 14px;
-      background-color: white;
-    }
-
-    .form-group input:focus {
-      border-color: var(--primary);
-      outline: none;
-    }
-
-    .modal-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .btn {
-      padding: 8px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 14px;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      border: none;
-    }
-
-    .btn-secondary {
-      background: white;
-      border: 1px solid #dadce0;
-      color: #3c4043;
-    }
-
-    .format-hint {
-      font-size: 12px;
-      color: #5f6368;
-      margin-top: 4px;
-    }
-  </style>
 </head>
 
 <body>
@@ -287,6 +18,7 @@
         <img src="assets/logo-small.png" alt="Logo">
         <h3>Smart Case Management</h3>
       </div>
+
       <ul class="sidebar-menu">
         <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
         <li><a href="case-management.html"><i class="fas fa-folder-open"></i> <span>Case Management</span></a>
@@ -323,6 +55,7 @@
         <li><a href="account.html"><i class="fa-solid fa-user"></i><span>Account
             </span></a></li>
       </ul>
+
       <div class="sidebar-footer">
         <div class="user-profile">
           <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="avatar">
@@ -358,6 +91,12 @@
               <div class="breadcrumb">
                 <a href="document-management.html">Organizations</a> &gt; <span>BLB</span>
               </div>
+            </div>
+          </div>
+          <div class="header-right">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search documents...">
             </div>
           </div>
         </div>
@@ -398,6 +137,8 @@
         </div>
       </div>
 
+
+
       <!-- Add Case Modal -->
       <div id="addCaseModal" class="modal">
         <div class="modal-content">
@@ -407,20 +148,13 @@
             <input type="text" id="caseId" placeholder="e.g. CN-00-01-2023" class="form-control">
             <div class="format-hint">Format: XX-00-00-YYYY (e.g. CN-00-05-2024)</div>
           </div>
-          <div class="form-group">
-            <label for="caseTitle">Case Title (Optional)</label>
-            <input type="text" id="caseTitle" placeholder="Brief description" class="form-control">
-          </div>
           <div class="modal-actions">
             <button class="btn btn-secondary">Cancel</button>
             <button class="btn btn-primary">Create Folder</button>
           </div>
         </div>
       </div>
-
     </div>
-
-
 
 
     <!-- Mobile Menu Toggle Button -->
