@@ -7,9 +7,9 @@
     <title>Dashboard</title>
     <!-- MODULE CSS SECOND -->
     <link rel="stylesheet" href="./css/dashboard.css" />
-    <!-- FONT AWESOME -->
+
+    <!-- FONTS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <!-- GOOGLE FONTS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -90,118 +90,11 @@
             </div>
 
             <div class="content-wrapper">
-
-                <!-- Search Filters -->
-                <!-- <form id="searchForm" action="search.html" method="get">
-                    <div class="filter-container">
-                        <div class="filter-row">
-                            <div class="filter-group">
-                                <input type="text" name="caseNumber" placeholder=" " class="filter-input" />
-                                <label>Case Number</label>
-                                <span class="focus-border"></span>
-                            </div>
-
-                            <div class="filter-group">
-                                <select name="organization" class="filter-select">
-                                    <option value="" selected disabled></option>
-                                    <option value="MoTJ">MoTJ</option>
-                                    <option value="BHB">BHB</option>
-                                    <option value="BSB">BSB</option>
-                                    <option value="JMC">JMC</option>
-                                </select>
-                                <label>Organization</label>
-                                <span class="focus-border"></span>
-                            </div>
-
-                            <div class="filter-group">
-                                <select name="caseType" class="filter-select">
-                                    <option value="" selected disabled></option>
-                                    <option value="Civil">Civil</option>
-                                    <option value="Criminal">Criminal</option>
-                                    <option value="Writ">Writ</option>
-                                </select>
-                                <label>Case Type</label>
-                                <span class="focus-border"></span>
-                            </div>
-                        </div>
-
-                
-                        <div class="filter-row">
-                            <div class="filter-group">
-                                <select name="status" class="filter-select">
-                                    <option value="" selected disabled></option>
-                                    <option value="Primary">Primary</option>
-                                    <option value="Hearing">Hearing</option>
-                                    <option value="witness">witness</option>
-                                    <option value="Judgment">Judgment</option>
-                                    <option value="Pending">Pending</option>
-                                    <option value="Closed">Closed</option>
-                                </select>
-                                <label>Status</label>
-                                <span class="focus-border"></span>
-                            </div>
-
-                            <div class="filter-group date-group">
-                                <div class="date-range">
-                                    <div class="date-input">
-                                        <input type="date" name="dateFrom" class="filter-date" />
-                                        <label>From Date</label>
-                                    </div>
-                                    <div class="date-input">
-                                        <input type="date" name="dateTo" class="filter-date" />
-                                        <label>To Date</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="filter-group">
-                                <select name="court" class="filter-select">
-                                    <option value="" selected disabled></option>
-                                    <option value="Supreme Court">Supreme Court</option>
-                                    <option value="High Court">High Court</option>
-                                    <option value="District Court">District Court</option>
-                                    <option value="Labor Court">Labor Court</option>
-                                    <option value="Civil Court">Civil Court</option>
-                                    <option value="Administrative Tribunal">Administrative Tribunal</option>
-                                    <option value="Appeal Tribunal">Appeal Tribunal</option>
-                                    <option value="Land Dispute">Land Dispute</option>
-                                </select>
-                                <label>Court</label>
-                                <span class="focus-border"></span>
-                            </div>
-                        </div>
-
-                 
-                        <div class="action-buttons">
-                            <button type="submit" class="btn btn-primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg>
-                                Search
-                            </button>
-                            <button type="reset" class="btn btn-secondary">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z" />
-                                    <path
-                                        d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z" />
-                                </svg>
-                                Reset
-                            </button>
-                        </div>
-                    </div>
-                </form> -->
-
-
                 <!-- Search Section -->
                 <div class="search-section">
                     <div class="search-bar">
                         <input type="text" placeholder="Search by case number, title, or keywords..."
                             class="search-input" id="mainSearchInput">
-                        <button class="search-btn" id="mainSearchBtn">Search</button>
                     </div>
                     <button class="advanced-search-toggle" id="advancedSearchToggle">
                         <i class="fas fa-chevron-down"></i> Advanced Search Options
@@ -215,21 +108,28 @@
                                     <option value="">All Types</option>
                                     <option value="labor">Labor Court</option>
                                     <option value="civil">Civil Court</option>
-                                    <option value="high">High Court</option>
-                                    <option value="contingent">Contingent</option>
-                                    <option value="contempt">Contempt</option>
-                                    <option value="administrative">Administrative Tribunal</option>
+                                    <option value="high">High Court Division</option>
+                                    <option value="contingent">Criminal Court</option>
+                                    <option value="contingent">Session Court</option>
+                                    <option value="contempt">Land Survey Tribunal</option>
                                     <option value="appeal">Appeal Tribunal</option>
+                                    <option value="administrative">Administrative Tribunal</option>
+                                    <option value="administrative">Administrative Appeal Tribunal</option>
+                                    <option value="administrative">Others</option>
                                 </select>
                             </div>
 
                             <div class="search-group">
                                 <label>Case Type</label>
                                 <select name="caseType" class="filter-select">
-                                    <option value="" selected disabled></option>
-                                    <option value="Civil">Civil</option>
-                                    <option value="Criminal">Criminal</option>
+                                    <option value="all">All Types</option>
+                                    <option value="civil">Civil</option>
+                                    <option value="criminal">Criminal</option>
+                                    <option value="contempt">Contempt</option>
                                     <option value="Writ">Writ</option>
+                                    <option value="Writ">Labor</option>
+                                    <option value="Writ">Appeal/Review</option>
+                                    <option value="Writ">Administrative Tribunal and Appellate Tribunal cases</option>
                                 </select>
                                 <span class="focus-border"></span>
                             </div>
@@ -238,9 +138,16 @@
                                 <label>Status</label>
                                 <select id="statusFilter">
                                     <option value="">All Statuses</option>
-                                    <option value="active">Active</option>
+                                    <option value="">preliminary</option>
                                     <option value="pending">Pending</option>
-                                    <option value="closed">Closed</option>
+                                    <option value="active">Appeal Filed</option>
+                                    <option value="active">Stayed</option>
+                                    <option value="active">Withdrawn</option>
+                                    <option value="active">Rejected</option>
+                                    <option value="active">Referred / Transferred</option>
+                                    <option value="closed">Summons/Notice Issued</option>
+                                    <option value="closed">Contempt</option>
+                                    <option value="active">Disposed</option>
                                 </select>
                             </div>
 
@@ -338,14 +245,31 @@
                         <div class="stat-icon bg-success"><i class="fas fa-check-circle"></i></div>
                         <div class="stat-info">
                             <h3>876</h3>
-                            <p>Closed Cases</p>
+                            <p>Disposed Cases</p>
                         </div>
                     </a>
+
+                    <a href="cases-detail.html" class="stat-card">
+                        <div class="stat-icon bg-primary"><i class="fas fa-calendar-week"></i></div>
+                        <div class="stat-info">
+                            <h3>8</h3>
+                            <p>New Cases</p>
+                        </div>
+                    </a>
+
                     <a href="cases-detail.html" class="stat-card">
                         <div class="stat-icon bg-secondary"><i class="fas fa-calendar-week"></i></div>
                         <div class="stat-info">
                             <h3>28</h3>
                             <p>7 Days Ago Cases</p>
+                        </div>
+                    </a>
+
+                    <a href="cases-detail.html" class="stat-card">
+                        <div class="stat-icon bg-navy"><i class="fa-solid fa-clock"></i></div>
+                        <div class="stat-info">
+                            <h3>128</h3>
+                            <p>Total Pending Cases</p>
                         </div>
                     </a>
                 </div>
@@ -358,6 +282,15 @@
                             <div class="icon bg-red"><i class="fas fa-user-tie"></i></div>
                             <div class="details">
                                 <div class="title">Administrative Tribunal</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="cases-detail.html" class="link-card">
+                        <div class="card">
+                            <div class="icon bg-danger"><i class="fa-brands fa-black-tie"></i></div>
+                            <div class="details">
+                                <div class="title">Administrative Appeal Tribunal</div>
                             </div>
                         </div>
                     </a>
@@ -384,7 +317,7 @@
                         <div class="card">
                             <div class="icon bg-purple"><i class="fas fa-landmark"></i></div>
                             <div class="details">
-                                <div class="title">High Court</div>
+                                <div class="title">High Court Division</div>
                             </div>
                         </div>
                     </a>
@@ -406,15 +339,6 @@
                             </div>
                         </div>
                     </a>
-
-                    <!-- <a href="cases-detail.html" class="link-card">
-                        <div class="card">
-                            <div class="icon bg-green"><i class="fas fa-file-alt"></i></div>
-                            <div class="details">
-                                <div class="title">Land Dispute</div>
-                            </div>
-                        </div>
-                    </a> -->
 
                     <a href="cases-detail.html" class="link-card">
                         <div class="card">
