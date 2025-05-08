@@ -53,21 +53,21 @@ function toggleSection(header) {
 }
 
 // Initialize all sections as closed
-document.addEventListener('DOMContentLoaded', function () {
-    const sections = document.querySelectorAll('.collapsible');
+// document.addEventListener('DOMContentLoaded', function () {
+//     const sections = document.querySelectorAll('.collapsible');
 
-    sections.forEach(section => {
-        const content = section.querySelector('.collapsible-content');
-        content.style.maxHeight = '0';
-        content.style.opacity = '0';
-    });
+//     sections.forEach(section => {
+//         const content = section.querySelector('.collapsible-content');
+//         content.style.maxHeight = '0';
+//         content.style.opacity = '0';
+//     });
 
-    // Handle window resize
-    window.addEventListener('resize', () => {
-        const activeSection = document.querySelector('.collapsible.active');
-        if (activeSection) {
-            const content = activeSection.querySelector('.collapsible-content');
-            content.style.maxHeight = content.scrollHeight + 'px';
-        }
-    });
-});
+//     // Handle window resize
+//     window.addEventListener('resize', () => {
+//         const activeSection = document.querySelector('.collapsible.active');
+//         if (activeSection) {
+//             const content = activeSection.querySelector('.collapsible-content');
+//             content.style.maxHeight = content.scrollHeight + 'px';
+//         }
+//     });
+// });
