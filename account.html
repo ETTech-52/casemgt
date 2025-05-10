@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Account | YourApp</title>
     <link rel="stylesheet" href="./css/account.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -14,21 +15,20 @@
 
     <div class="app-container">
         <!-- Sidebar Navigation -->
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <img src="assets/logo-small.png" alt="Logo">
                 <h3>Smart Case Management</h3>
             </div>
-            <!-- Sidebar  -->
             <ul class="sidebar-menu">
-                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                <li><a href="case-management.html"><i class="fas fa-folder-open"></i><span>Case Management</span></a>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                <li><a href="case-management.html"><i class="fas fa-folder-open"></i> <span>Case Management</span></a>
                 </li>
-                <li><a href="lists.html"><i class="fas fa-gavel"></i><span>Lists</span></a></li>
-                <li><a href="user-management.html"><i class="fas fa-users"></i><span>User Management</span></a></li>
-                <li><a href="document-management.html"><i class="fas fa-file-alt"></i><span>Documents
+                <li><a href="lists.html"><i class="fas fa-gavel"></i> <span>Lists</span></a></li>
+                <li><a href="user-management.html"><i class="fas fa-users"></i> <span>User
+                            Management</span></a></li>
+                <li><a href="document-management.html"><i class="fas fa-file-alt"></i> <span>Documents
                         </span></a></li>
-
                 <!-- Reports Dropdown -->
                 <div class="ac_accordion">
                     <div class="ac_accordion-item">
@@ -51,10 +51,10 @@
                     </div>
                 </div>
 
-                <li><a href="case-history.html"><i class="fas fa-history"></i><span>Case History</span></a></li>
+                <li><a href="case-history.html"><i class="fas fa-history"></i> <span>Case History</span></a></li>
                 <li><a href="activity.html"><i class="fas fa-clipboard-list"></i><span>Activity
                             Log</span></a></li>
-                <li class="active"><a href="account.html"><i class="fa-solid fa-user"></i></i><span>Account
+                <li class="active"><a href="account.html"><i class="fa-solid fa-user"></i><span>Account
                         </span></a></li>
             </ul>
             <div class="sidebar-footer">
@@ -65,12 +65,9 @@
                         <span class="role">Administrator</span>
                     </div>
                 </div>
-                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
             </div>
         </div>
-
-        <!-- Sidebar Overlay (Mobile Only) -->
-        <div class="sidebar-overlay"></div>
 
         <!-- Main Content Area -->
         <div class="container">
@@ -278,33 +275,14 @@
         </div>
     </div>
 
-    <script>
+    <!-- Mobile Menu Toggle Button -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
 
-        // Tab switching functionality
-        document.querySelectorAll('.nav-item[data-tab]').forEach(tab => {
-            tab.addEventListener('click', function (e) {
-                e.preventDefault();
 
-                // Remove active class from all tabs
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.remove('active');
-                });
-
-                // Add active class to clicked tab
-                this.classList.add('active');
-
-                // Hide all tab contents
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-
-                // Show selected tab content
-                const tabId = this.getAttribute('data-tab') + '-tab';
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-    </script>
     <script src="js/account.js"></script>
+    <script src="js/sidebar.js"></script>
 </body>
 
 </html>
