@@ -1,13 +1,5 @@
-// Mobile menu toggle
-const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-const sidebar = document.querySelector('.sidebar');
 
-mobileMenuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-});
-
-
-// // Simple modal toggle functionality
+// // view detail modal functionality
 document.querySelectorAll('.view-details').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -29,10 +21,3 @@ document.getElementById('logDetailModal').addEventListener('click', (e) => {
     }
 });
 
-// // Filter functionality
-// document.querySelectorAll('.log-filters select, .log-filters input').forEach(el => {
-//     el.addEventListener('change', () => {
-//         console.log('Filter changed:', el.value);
-//         // In a real app, this would filter the table data
-//     });
-// });
