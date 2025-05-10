@@ -1,3 +1,4 @@
+// 1st Timeline History design 
 
 document.addEventListener('DOMContentLoaded', function () {
     // Organization toggle functionality
