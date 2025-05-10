@@ -270,7 +270,8 @@
                                     </td>
                                     <td>Judgment</td>
                                     <td class="actions">
-                                        <button class="action-btn view"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn view" id="openView"><i
+                                                class="fas fa-eye"></i></button>
                                         <button class="action-btn edit"><i class="fas fa-edit"></i></button>
                                         <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                     </td>
@@ -326,17 +327,225 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
-
-
 
             </div>
         </div>
     </div>
 
+
+    <!-- Add/Edit Case Modal -->
+    <div class="modals" id="caseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add New Case</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="caseForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="caseNumber">Case Number</label>
+                            <input type="text" id="caseNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="caseTitle">Case Title</label>
+                            <input type="text" id="caseTitle" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="caseType">Case Type</label>
+                            <select id="caseType" required>
+                                <option value="">Select Type</option>
+                                <option value="labor">Labor Court</option>
+                                <option value="civil">Civil Court</option>
+                                <option value="high">High Court</option>
+                                <option value="contingent">Contingent Case</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="courtName">Court Name</label>
+                            <input type="text" id="courtName" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="filingDate">Filing Date</label>
+                            <input type="date" id="filingDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nextHearing">Hearing Date</label>
+                            <input type="date" id="nextHearing">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hearingType">Hearing Type</label>
+                            <select id="hearingType">
+                                <option value="">Select Hearing Type</option>
+                                <option value="preliminary">Preliminary Hearing</option>
+                                <option value="motion">Motion Hearing</option>
+                                <option value="trial">Trial</option>
+                                <option value="settlement">Settlement Conference</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="actionTaken">Action Taken</label>
+                            <input type="text" id="actionTaken" placeholder="Enter action taken">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="caseStatus">Status</label>
+                            <select id="caseStatus" required>
+                                <option value="active">Priliminary</option>
+                                <option value="pending">Pending</option>
+                                <option value="closed">Disposed</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="prStatus">P/R Status</label>
+                            <select id="prStatus">
+                                <option value="P">Plaintiff (P)</option>
+                                <option value="R">Respondent (R)</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="assignedLawyer">Assigned Lawyer</label>
+                            <select id="assignedLawyer">
+                                <option value="">Select Lawyer</option>
+                                <option value="1">Adv. Rahman</option>
+                                <option value="2">Adv. Choudhury</option>
+                                <option value="3">Adv. Khan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignedOrg">Assigned Organization</label>
+                            <select id="assignedOrg">
+                                <option value="">Select Organization</option>
+                                <option value="1">MoTI</option>
+                                <option value="2">Dept. of Jute</option>
+                                <option value="3">Bangladesh Handloom Board</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input id="location" placeholder="Enter Location">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caseDescription">Case Description</label>
+                        <textarea id="caseDescription" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caseDecision">Decision</label>
+                        <textarea id="caseDecision" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="caseDocuments">Upload Documents</label>
+                        <input type="file" id="caseDocuments" multiple>
+                        <div class="file-list" id="fileList"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel close-modal">Cancel</button>
+                        <button type="submit" class="btn-submit">Save Case</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Details Modal -->
+    <div class="modal" id="caseDetailsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="detailsModalTitle">Case Details</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="caseDetailsContent">
+                <table class="details-table">
+                    <tbody>
+                        <tr>
+                            <td class="label">Case Number:</td>
+                            <td class="value">SCM-2023-001</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Title:</td>
+                            <td class="value">Worker Compensation Claim</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Case Type:</td>
+                            <td class="value">Labor case</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Court:</td>
+                            <td class="value">Labor Court Dhaka</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Status:</td>
+                            <td class="value"><span class="status active">Active</span></td>
+                        </tr>
+                        <tr>
+                            <td class="label">Filing Date:</td>
+                            <td class="value">Jan 15, 2023</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Hearing Date:</td>
+                            <td class="value">Apr 25, 2023</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Hearing Type:</td>
+                            <td class="value">Preliminary</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Action Taken:</td>
+                            <td class="value">Filed petition</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Location:</td>
+                            <td class="value">Dhaka</td>
+                        </tr>
+                        <tr>
+                            <td class="label">P/R:</td>
+                            <td class="value">P</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Lawyer:</td>
+                            <td class="value">Adv. Rahman</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Organization:</td>
+                            <td class="value">MoTI</td>
+                        </tr>
+                        <tr class="full-width">
+                            <td class="label">Description:</td>
+                            <td class="value">Constitutional interpretation of Article 32 regarding worker rights and
+                                compensation claims for unpaid wages and benefits dating back to 2022.</td>
+                        </tr>
+                        <tr class="full-width">
+                            <td class="label">Decision:</td>
+                            <td class="value">Case is disposed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
 
