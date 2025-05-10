@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document Management - Smart Case Management</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="stylesheet" href="./css/document-management.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -142,33 +142,7 @@
     </div>
 
 
-    <!-- Create Folder Modal example -->
-    <div class="modal" id="createFolderModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Create New Folder</h3>
-                <button class="close-btn" id="closeModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="createFolderForm">
-                    <div class="form-group">
-                        <label for="folderName">Folder Name</label>
-                        <input type="text" id="folderName" name="folderName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="folderDescription">Numbers</label>
-                        <textarea id="folderDescription" name="folderDescription" rows="3">3 Cases</textarea>
-                    </div>
-                    <div class="modal-actions">
-                        <button type="button" class="btn-secondary" id="cancelFolder">Cancel</button>
-                        <button type="submit" class="btn-primary">Create Folder</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Mobile Menu Toggle Button -->
     <button class="mobile-menu-toggle" id="mobileMenuToggle">
@@ -176,6 +150,7 @@
     </button>
 
     <script src="js/document-management.js"></script>
+    <script src="js/sidebar.js"></script>
 
 </body>
 
