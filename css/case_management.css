@@ -354,7 +354,7 @@ body {
 }
 
 .table-container {
-    overflow-x: auto;
+    /* overflow-x: auto; */
     width: 100%;
     border-radius: var(--border-radius);
 }
@@ -362,7 +362,7 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1200px;
+    min-width: 1135px;
 }
 
 th,
@@ -445,6 +445,7 @@ tr:hover {
 .actions {
     display: flex;
     gap: 8px;
+    padding: 25px 0px;
 }
 
 .action-btn {
@@ -771,6 +772,12 @@ tr:hover {
 
 .modal.show .modal-content {
     transform: translateY(0);
+}
+
+div#caseStatus {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 /* Mobile Styles */
