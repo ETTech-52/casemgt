@@ -102,6 +102,7 @@
                             <div class="filter-group">
                                 <div class="select-wrapper">
                                     <select name="organization" class="floating-select">
+                                        <option value="">Select Organization</option>
                                         <option value="all-org">All Org</option>
                                         <option value="MoTJ">MoTJ</option>
                                         <option value="BHB">BHB</option>
@@ -118,6 +119,7 @@
                             <div class="filter-group">
                                 <div class="select-wrapper">
                                     <select name="caseType" class="floating-select">
+                                        <option value="">Select Case Type</option>
                                         <option value="all">All Types</option>
                                         <option value="civil">Civil</option>
                                         <option value="criminal">Criminal</option>
@@ -138,7 +140,7 @@
                             <div class="filter-group">
                                 <div class="select-wrapper">
                                     <select name="status" class="floating-select">
-                                        <option value="">All Statuses</option>
+                                        <option value="">Select One</option>
                                         <option value="">preliminary</option>
                                         <option value="pending">Pending</option>
                                         <option value="active">Appeal Filed</option>
@@ -160,7 +162,8 @@
                             <div class="filter-group">
                                 <div class="select-wrapper">
                                     <select name="court" class="floating-select">
-                                        <option value="">All Types</option>
+                                        <option value="">Select Court</option>
+                                        <option value="">All Courts</option>
                                         <option value="labor">Labor Court</option>
                                         <option value="civil">Civil Court</option>
                                         <option value="high">High Court Division</option>
@@ -236,14 +239,17 @@
                                     <th>Status</th>
                                     <th>Filing Date</th>
                                     <th>Hearing Date</th>
-                                    <th>Hearing Type</th>
+                                    <!--<th>Hearing Type</th>
                                     <th>Action Taken</th>
                                     <th>Location</th>
+                                     <th>Plaintiff Name</th>
+                                    <th>Respondent Name</th>
+                                    <th>Writ Pitition No.</th>`
                                     <th>P/R</th>
                                     <th>Lawyer</th>
                                     <th>Organization</th>
                                     <th>Description</th>
-                                    <th>Decision</th>
+                                    <th>Decision</th> -->
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -257,9 +263,12 @@
                                     <td><span class="status active">Active</span></td>
                                     <td>Jan 15, 2023</td>
                                     <td>Apr 25, 2023</td>
-                                    <td>Preliminary Hearing</td>
+                                    <!--  <td>Preliminary Hearing</td>
                                     <td>Filed petition</td>
                                     <td>Dhaka</td>
+                                    <td>Mr. Jamal</td>
+                                    <td>Star Jute Mills Ltd.</td>
+                                    <td>2023-001</td>
                                     <td>P</td>
                                     <td>Adv.Jamal</td>
                                     <td>MoTI</td>
@@ -268,39 +277,10 @@
                                         Bangladesh Handloom Board,
                                         Citizen Group vs. State
                                     </td>
-                                    <td>Judgment</td>
+                                    <td>Judgment</td> -->
                                     <td class="actions">
                                         <button class="action-btn view" id="openView"><i
                                                 class="fas fa-eye"></i></button>
-                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
-                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>SCM-2023-001</td>
-                                    <td>Worker Compensation Claim</td>
-                                    <td>Civil Case</td>
-                                    <td>Labor Court Dhaka</td>
-                                    <td><span class="status active">Active</span></td>
-                                    <td>Jan 15, 2023</td>
-                                    <td>Apr 25, 2023</td>
-                                    <td>Preliminary Hearing</td>
-                                    <td>Filed petition</td>
-                                    <td>Dhaka</td>
-                                    <td>P</td>
-                                    <td>Adv.Jamal</td>
-                                    <td>MoTI</td>
-                                    <td>
-                                        Trial,
-                                        Bangladesh Handloom Board,
-                                        Citizen Group vs. State
-                                    </td>
-                                    <td>Judgment</td>
-                                    <td class="actions">
-                                        <button class="action-btn view"><i class="fas fa-eye"></i></button>
                                         <button class="action-btn edit"><i class="fas fa-edit"></i></button>
                                         <button class="action-btn delete"><i class="fas fa-trash"></i></button>
                                     </td>
@@ -406,13 +386,26 @@
                                 <option value="pending">Pending</option>
                                 <option value="closed">Disposed</option>
                             </select>
+                            <div id="caseStatus" required>
+                                <label value="active">Plaintiff Name</label>
+                                <input name="Plaintiff Name" id="Plaintiff Name"></input>
+                            </div>
+                            <div id="caseStatus" required>
+                                <label value="active">Respondent Name</label>
+                                <input name="Respondent Name" id="Respondent Name"></input>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="prStatus">P/R Status</label>
+                            <label for="prStatus">In Favour of</label>
                             <select id="prStatus">
+                                <option value="">Select P/R</option>
                                 <option value="P">Plaintiff (P)</option>
                                 <option value="R">Respondent (R)</option>
                             </select>
+                            <div id="caseStatus" required>
+                                <label value="active">Writ Petition No.</label>
+                                <input name="Respondent Name" id="Respondent Name"></input>
+                            </div>
                         </div>
                     </div>
 
@@ -517,6 +510,18 @@
                         <tr>
                             <td class="label">Location:</td>
                             <td class="value">Dhaka</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Plaintiff Name:</td>
+                            <td class="value">Mr. Jamal</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Respondent Name:</td>
+                            <td class="value">Star Jute Mills Ltd.</td>
+                        </tr>
+                        <tr>
+                            <td class="label">Writ Petition No.:</td>
+                            <td class="value">2023-001</td>
                         </tr>
                         <tr>
                             <td class="label">P/R:</td>
